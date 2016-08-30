@@ -28,11 +28,11 @@ The **SSH Key Generator** should respond with a message indicating that you are 
 
 Once you type the desired name and press <kbd>Enter</kbd>, the **SSH Key Generator** will ask you for a **_passphrase_**. If you enter anything here you will be asked to re-enter it each time you use the **SSH Key** (and we don't want that). So, keep it empty by pressing <kbd>Enter</kbd>. The **SSH Key Generator** will ask you to confirm the **_passphrase_**. Simply press <kbd>Enter</kbd> once again and the process will be complete.
 
-You should see a message saying `The key fingerprint is:` with a bunch of numbers and another message just after it saying `The key's randomart image is:` with an ASCII representation of an image. It means you key was created correctly.
+You should see a message saying `The key fingerprint is:` with a bunch of _numbers_, followed by another message saying `The key's randomart image is:`, with an ASCII representation of an image under it. It means you **SSH Keys** were created correctly.
 
-Now, repeate the same process by typing `ssh-keygen -t rsa -C "email@business.com"` <kbd>Enter</kbd>, but now use the business emaill associated to the _other_ Github account. When asked by the name of the file you want to use you must enter a different name. I would suggest something like "`id_rsa_YourName_BusinessName`", so the keys will be created as `id_rsa_YourName_BusinessName` (the PRIVATE KEY) and `id_rsa_YourName_BusinessName.pub` (the PUBLIC KEY).
+Now, let's create the second set of **SSH Keys** we will use for the _other_ Github account. Simply repeat the same process by typing `ssh-keygen -t rsa -C "email@business.com"` followed by <kbd>Enter</kbd>, but this time use your _business email_ or whatever email that is associated to the _other_ Github account. Then, when it asks for the **SSH Key** _file name_, use a name different than the previous **SSH Key** created. I would suggest something like "`id_rsa_YourName_BusinessName`", which will created the **SSH Keys** as `id_rsa_YourName_BusinessName` (the PRIVATE KEY) and `id_rsa_YourName_BusinessName.pub` (the PUBLIC KEY).
 
-Once complete, you will have four files in your `~/.ssh/` directory:
+Once complete, you will have four files in your `~/.ssh/` directory (two for each **SSH Key Set**):
 
 ```
 id_rsa_YourName
@@ -42,22 +42,22 @@ id_rsa_YourName_BusinessName.pub
 ```
 
 **Important Remark About the `passphrases`:**  
-If you decided to add a **_passphrase_** in your **SSH Keys**, but still wants to be able to use it without having to type it each time your **SSH Key** is invoked, you can add YOUR private key identities (from your ~/.ssh directory) to the authentication agent (ssh-agent) in your local machine. The authentication agent will remember the **_passphrases_** after you use it for the first time. This is a convenience option and work "per **SSH Key**", which means you will have to add one by one via command line using `ssh-add ~/.ssh/id_rsa_KEYNAME`. You can always list which of your **SSH Keys** are being "rememberd" by the ssh-agent by using the command `ssh-add -l`, and you can always erase all cached **_passphrases_** by using the command `ssh-add -D`.
+If you decided to add a **_passphrase_** in your **SSH Keys**, but still want to be able to use it without having to enter it each time your **SSH Key** is invoked, you can add _YOUR_ private key identities (from your `~/.ssh` directory) to the _authentication agent_ (`ssh-agent`), for your local machine only. The _authentication agent_ will remember the **_passphrases_** after you use it once. This is a convenience option, and works "per **SSH Key**", which means you will have to add one by one via command line using `ssh-add ~/.ssh/id_rsa_KEYNAME`. You can always list which of your **SSH Keys** are being "remembered" by the `ssh-agent` using the command: `ssh-add -l` <kbd>Enter</kbd>. To erase the cached **_passphrases_** on your system use the command: `ssh-add -D` <kbd>Enter</kbd>.
 
 
 STEP 2 - Create a SSH Config File
 ---------------------------------
 
-The SSH configuration files allow you to create shortcuts for sshd server, including advanced ssh client options. You can configure your OpenSSH ssh client using various files as follows to save time and typing frequently used ssh client command line options such as port, user, hostname, identity-file and much more. Yoy can learn more about it <a href="http://www.cyberciti.biz/faq/create-ssh-config-file-on-linux-unix/" target="_blank">here</a>, <a href="https://sanctum.geek.nz/arabesque/uses-for-ssh-config/" target="_blank">here</a> and <a href="http://linux.die.net/man/5/ssh_config" target="_blank">here</a>.
+The _SSH configuration files_ allow you to create shortcuts for `sshd server`, including advanced _SSH Client Options_ to it (if needed). You can have various configuration files for the same _SSH Client_, each one for a different purpose and/or with specific command line options, such as: port, user, hostname, identity-file and much more. You can learn more about it <a href="http://www.cyberciti.biz/faq/create-ssh-config-file-on-linux-unix/" target="_blank">here</a>, <a href="https://sanctum.geek.nz/arabesque/uses-for-ssh-config/" target="_blank">here</a> and <a href="http://linux.die.net/man/5/ssh_config" target="_blank">here</a>.
 
-In our case, as we are targeting Github, we can simply create a new file in the `~/.ssh/` directory named "**config**" (as indicated below):
+In our case, as we are targeting Github multiple accounts, we can simply create a new file in the `~/.ssh/` directory and name it "**config**" (or "**github-config**" if you prefer). Simply enter the following commands:
 
 ```shell
 cd ~/.ssh/
 touch config
 ```
 
-Then, open it in a text editor of your choice (vi, vim, nano, gedit, kate, etc.) and paste the following _script_:
+It will create an empty file with proper permissions. Then, open the newly created file in a text editor of your choice (vi, vim, nano, gedit, kate, etc.) and paste the following _script_ in it:
 
 ```bash
 # My Personal Github Account Access
@@ -73,7 +73,9 @@ User git
 IdentityFile ~/.ssh/id_rsa_YourName_BusinessName
 ```
 
-**NOTE:** Remember to fix the **SSH Key _File Names_** to reflect the ones you used when creating the **SSH Keys**.
+**NOTE:** Remember to fix the **SSH Key _File Names_** to reflect the ones you used when creating the **SSH Keys** before.
+
+Save the file and you are done setting the computer side.
 
 ### Important Remarks about the `~/.ssh/` directory and the **SSH Key** files:
 
