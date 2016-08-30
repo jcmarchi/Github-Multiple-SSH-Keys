@@ -7,7 +7,7 @@ While Github helps keep each project organized and separated, most likely the de
 
 The usage of SSH is optional. For repositories accessible via **HTTPS** the **SSH Keys** are not required. As such, if you are not intending to use SSH, you don't need to read this tutorial.
 
-I the same sense, this tutorial won't cover how to setup a **_single_ SSH Key**. It should be a basic task for any developer. However, if you don't know how to do it, I would strongly suggest you to read <a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/" target="_blank">this page</a>. 
+In the same sense, this tutorial won't cover how to setup a **_single_ SSH Key**. It should be a basic task for any developer. However, if you don't know how to do it, I strongly suggest you to read <a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/" target="_blank">this page</a>. 
 
 Finally, this tutorial only covers the process for **Linux**/**Unix**/**Mac** environments. For <b>Windows<sup>tm</sup></b> environments I suggest you to <a href="http://www.bing.com/search?q=Setting+up+Git+and+GitHub+for+development+on+Windows&go=Submit&qs=n&form=QBLH&pq=setting+up+git+and+github+for+development+on+windows&sc=0-52&sp=-1&sk=&cvid=FC7B8D05F6D64B4D8B3B487FC862CD24" target="_blank">Bing</a> it.
 
