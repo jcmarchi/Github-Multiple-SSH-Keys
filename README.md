@@ -1,17 +1,17 @@
 # Multiple SSH Keys for Multiple Github Accounts
 ### How to configure multiple SSH Keys settings for different Github accounts and have your local development environment(s) set to work with them all.
 
-It is a very common scenario: developers having to deal with two or more accounts, and/or several discentralized projects.
+It is a very common scenario: developers having to deal with two or more Github accounts, and/or several discentralized projects..
 
-While Github helps keep each project organized and separated, most likely the developer will use the same machine to work on more than one account. 
+While Github helps keep each project organized and separated, most likely the developer will use the same machine to work with more than one Github account. As Github doesn't allow the same **SSH PUBLIC Key** to be added across accounts, the developer is forced to keep more than one set of **SSH Keys** (PRIVATE and PUBLIC Keys) in the same machine, then use the correct one to access each specific repository.
 
-For public repositories accessible via **HTTPS** the **SSH Key** is not required, but private repositories are protected and only people authorized should be able to gain access to it. The **SSH Keys**, when properly set, allows secure access via SSH to private repositories without the need of password entry. 
+The usage of SSH is optional. For repositories accessible via **HTTPS** the **SSH Keys** are not required. As such, if you are not intending to use SSH, you don't need to read this tutorial.
 
-I won't cover here how to setup a **_single_ SSH Key** because it should be a very basic task for any developer. However, ff you don't know how to do it, please <a href="http://www.google.com" target="_blank">Google</a> the subject or take a read at <a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/" target="_blank">this page</a>. 
+I the same sense, this tutorial won't cover how to setup a **_single_ SSH Key**. It should be a basic task for any developer. However, if you don't know how to do it, I would suggest a reading to: <a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/" target="_blank">this page</a>. 
 
-Please, notice that this small tutorial only covers the process for Linux/Unix/Mac environments. For Windows<sup<tm</sup> environments I suggest you to <a href="http://www.bing.com/search?q=Setting+up+Git+and+GitHub+for+development+on+Windows&go=Submit&qs=n&form=QBLH&pq=setting+up+git+and+github+for+development+on+windows&sc=0-52&sp=-1&sk=&cvid=FC7B8D05F6D64B4D8B3B487FC862CD24" target="_blank">Bing</a> it.
+Finally, this tutorial only covers the process for Linux/Unix/Mac environments. For Windows<sup>tm</sup> environments I suggest you to <a href="http://www.bing.com/search?q=Setting+up+Git+and+GitHub+for+development+on+Windows&go=Submit&qs=n&form=QBLH&pq=setting+up+git+and+github+for+development+on+windows&sc=0-52&sp=-1&sk=&cvid=FC7B8D05F6D64B4D8B3B487FC862CD24" target="_blank">Bing</a> it.
 
-It may sounds "complicated" at first glance, but the process is fast and can be done in three easy steps:
+So, let's get our handy dirty! The entire process can be done in three easy steps:
 
 
 STEP 1 - Create your Public Keys
