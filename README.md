@@ -1,4 +1,4 @@
-# Github-Multiple-SSH-Keys
+# Multiple SSH Keys for Multiple Github Accounts
 ### How to configure multiple SSH Keys settings for different Github accounts and have your local development environment(s) set to work with them all.
 
 It is a very common scenario: developers having to deal with two or more accounts, and/or several discentralized projects.
@@ -11,7 +11,7 @@ I won't cover here how to setup a **_single_ SSH Key** because it should be a ve
 
 Please, notice that this small tutorial only covers the process for Linux/Unix/Mac environments. For Windows<sup<tm</sup> environments I suggest you to <a href="http://www.bing.com/search?q=Setting+up+Git+and+GitHub+for+development+on+Windows&go=Submit&qs=n&form=QBLH&pq=setting+up+git+and+github+for+development+on+windows&sc=0-52&sp=-1&sk=&cvid=FC7B8D05F6D64B4D8B3B487FC862CD24" target="_blank">Bing</a> it.
 
-It may sounds "complicated", but the process can be done in three easy steps. Let's go!
+It may sounds "complicated" at first glance, but the process is fast and can be done in three easy steps:
 
 
 STEP 1 - Create your Public Keys
@@ -43,6 +43,7 @@ id_rsa_YourName_BusinessName.pub
 
 **Important Remark About the `passphrases`:**  
 If you decided to add a passphrase in your SSH Keys, but still wants to be able to use it without having to type it each time your SSH Key is invoked, you can add YOUR private key identities (from your ~/.ssh directory) to the authentication agent (ssh-agent) in your local machine. The authentication agent will remember the passphrases after you use it for the first time. This is a convenience option and work "per SSH Key", which means you will have to add one by one via command line using `ssh-add ~/.ssh/id_rsa_KEYNAME`. You can always list which of your SSH Keys are being "rememberd" by the ssh-agent by using the command `ssh-add -l`, and you can always erase all cached passphrases by using the command `ssh-add -D`.
+
 
 STEP 2 - Create a SSH Config File
 ---------------------------------
