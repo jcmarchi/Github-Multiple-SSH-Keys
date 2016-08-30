@@ -117,7 +117,7 @@ No much to say here. Simply remember to refer to the proper host and the rest wi
 
 In any standard configuration, Github is always accessed via `git@github.com`. If you look to the item `hoist` in the config file you just wrote, you will notice that for the `host = git@github.com` the **SSH Key** `~/.ssh/id_rsa_YourName` will be used. However, if you refer to `git@github.com-BusinessName`, the **SSH Key** that will be used will be `~/.ssh/id_rsa_YourName_BusinessName`.
 
-That's it. Just reference the call to the correct `HostName` and let the SSH Config File do the rest.
+That's it. Just refer the call to the **correct `HostName`** and let the _SSH Config File_ work out the rest.
 
 
 Troubleshooting
