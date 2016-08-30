@@ -17,7 +17,7 @@ So, let's get our handy dirty! The entire process can be done in three easy step
 STEP 1 - Create your Public Keys
 ---------------------------------
 
-Assuming you have <a href="https://git-scm.com/downloads" target="_blank">downloaded and installed the latest version of Git</a> and already <a href="https://git-scm.com/book/uz/v2/Customizing-Git-Git-Configuration#_git_config" target="_blank">configured it correctly</a>, now it is time to create your **SSH Keys**. Lets begin by creating your personal **SSH Keys**. Open the terminal and type the following: 
+Assuming you have <a href="https://git-scm.com/downloads" target="_blank">downloaded and installed the latest version of Git</a> and already <a href="https://git-scm.com/book/uz/v2/Customizing-Git-Git-Configuration#_git_config" target="_blank">configured it correctly</a>, now it is time to create your **SSH Keys**. Lets begin by creating your personal **SSH Keys**. Open the terminal and enter the following: 
 
 ```shell
 ssh-keygen -t rsa -C "your_email@youremail.com"
