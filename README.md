@@ -69,6 +69,26 @@ IdentityFile ~/.ssh/id_rsa_YourName_BusinessName
 
 Remember to fix the names to reflect the names you used when creating the SSH Keys.
 
+### Important Remarks about the files in ` ~/.ssh/`
+
+SSH requires specific permissions for its _files_ and _directories_, otherwise it won't work. Most of the time SSH errors or lack of functionality are caused by misset permissions. Here how to do it right:
+
+- The `~/.ssh` directory permissions must be **`700 (drwx------)`**.  
+  You can use the following command to achieve it:
+  
+  `chmod 700 ~/.ssh`
+  
+- The public key file(s), the ones with `.pub` extesion, must be set with **`644 (-rw-r--r--)`** permissions.  
+  You can use the following command to achieve it:
+  
+  `chmod 644 ~/.ssh/[Filename.pub]`
+  
+- The private key, the `id_rsa` file, the ones with **no** extension, must be set with **`600 (-rw-------)`** permissions.  
+  You can use the following command toachieve it:
+  
+  `chmod 600 ~/.ssh/[Filename]`
+  
+
 
 STEP 3 - Saving the SSH Keys at Github
 ---------------------------------------------
