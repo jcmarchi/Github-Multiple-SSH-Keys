@@ -77,7 +77,7 @@ IdentityFile ~/.ssh/id_rsa_YourName_BusinessName
 
 ### Important Remarks about the `~/.ssh/` directory and the **SSH Key** files:
 
-Most of the time poeple fail using **SSH Keys** or get access errors because of bad permissions. SSH requires specific permissions for its _files_ and _directories_, otherwise it won't work. In some systems it may be more or less strict, but we will based our teachings here what the **_SSH Standards_** define. Here the basic recipe of how it should be done to function properly:
+Most of the time people fail using **SSH Keys** or get access errors because of bad permissions. SSH requires specific permissions for its _files_ and _directories_, otherwise it won't work. In some systems it may be more or less strict, but we will based our teachings here what the **_SSH Standards_** define. Here the basic recipe of how it should be done to function properly:
 
 - The `~/.ssh` directory permissions must be **`700 (drwx------)`**.  
   You can use the following command to achieve it:
