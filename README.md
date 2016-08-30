@@ -1,15 +1,20 @@
 # Github-Multiple-SSH-Keys
 ### How to configure multiple SSH Keys settings for different Github accounts and have your local development environment(s) set to work with them all.
 
-A very common scenario, where developers have to deal with two or more accounts and/or several discentralized projects.
+It is a very common scenario: developers having to deal with two or more accounts, and/or several discentralized projects.
 
 While Github helps keep each project organized and separated, most likely the developer will use the same machine to work on more than one account. 
 
-For public repositories accessible via HTTPS the SSH Key is not required, but private repositories are protected and only people authorized can access it. The SSH Keys allows those secure accesses to occur without login/password requirement. Once setup correctly on both ends, develoeprs can access their private repositories, securely, as if they were public.
+For public repositories accessible via **HTTPS** the **SSH Key** is not required, but private repositories are protected and only people authorized should be able to gain access to it. The **SSH Keys**, when properly set, allows secure access via SSH to private repositories without the need of password entry. 
 
-I won't cover how to setup a single SSH Key because it should be a basic task for any develeoper. If you don't know how to do it polease Google the subject. Also, the steps here presented are meant for Linux/Unix local environment. For those usigin Windows I suggest to Bign it, as those instructions won't suface.
+I won't cover here how to setup a **_single_ SSH Key** because it should be a very basic task for any developer. However, ff you don't know how to do it, please <a href="http://www.google.com" target="_blank">Google</a> the subject or take a read at <a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/" target="_blank">this page</a>. 
 
-SETP 1 - Create your Public Keys
+Please, notice that this small tutorial only covers the process for Linux/Unix/Mac environments. For Windows<sup<tm</sup> environments I suggest you to <a href="http://www.bing.com/search?q=Setting+up+Git+and+GitHub+for+development+on+Windows&go=Submit&qs=n&form=QBLH&pq=setting+up+git+and+github+for+development+on+windows&sc=0-52&sp=-1&sk=&cvid=FC7B8D05F6D64B4D8B3B487FC862CD24" target="_blank">Bing</a> it.
+
+It may sounds "complicated", but the process can be done in three easy steps. Let's go!
+
+
+STEP 1 - Create your Public Keys
 ---------------------------------
 
 Assuming you have <a href="https://git-scm.com/downloads" target="_blank">downloaded and installed the latest version of Git</a> and already <a href="https://git-scm.com/book/uz/v2/Customizing-Git-Git-Configuration#_git_config" target="_blank">configured it correctly</a>, now it is time to create your **SSH Keys**. Lets begin by creating your personal SSH Keys. Open the terminal and type the following: 
@@ -36,10 +41,10 @@ id_rsa_YourName_BusinessName
 id_rsa_YourName_BusinessName.pub
 ```
 
-**Important Remark About the `passphrase`:**  
+**Important Remark About the `passphrases`:**  
 If you decided to add a passphrase in your SSH Keys, but still wants to be able to use it without having to type it each time your SSH Key is invoked, you can add YOUR private key identities (from your ~/.ssh directory) to the authentication agent (ssh-agent) in your local machine. The authentication agent will remember the passphrases after you use it for the first time. This is a convenience option and work "per SSH Key", which means you will have to add one by one via command line using `ssh-add ~/.ssh/id_rsa_KEYNAME`. You can always list which of your SSH Keys are being "rememberd" by the ssh-agent by using the command `ssh-add -l`, and you can always erase all cached passphrases by using the command `ssh-add -D`.
 
-SETP 2 - Create a SSH Config File
+STEP 2 - Create a SSH Config File
 ---------------------------------
 
 The SSH configuration files allow you to create shortcuts for sshd server, including advanced ssh client options. You can configure your OpenSSH ssh client using various files as follows to save time and typing frequently used ssh client command line options such as port, user, hostname, identity-file and much more. Yoy can learn more about it <a href="http://www.cyberciti.biz/faq/create-ssh-config-file-on-linux-unix/" target="_blank">here</a>, <a href="https://sanctum.geek.nz/arabesque/uses-for-ssh-config/" target="_blank">here</a> and <a href="http://linux.die.net/man/5/ssh_config" target="_blank">here</a>.
@@ -69,29 +74,29 @@ IdentityFile ~/.ssh/id_rsa_YourName_BusinessName
 
 Remember to fix the names to reflect the names you used when creating the SSH Keys.
 
-### Important Remarks about the files in ` ~/.ssh/`
+### Important Remarks about the ` ~/.ssh/` directory and its files:
 
 SSH requires specific permissions for its _files_ and _directories_, otherwise it won't work. Most of the time SSH errors or lack of functionality are caused by misset permissions. Here how to do it right:
 
 - The `~/.ssh` directory permissions must be **`700 (drwx------)`**.  
   You can use the following command to achieve it:
   
-  `chmod 700 ~/.ssh`
+  `chmod 700 ~/.ssh` <kbd>Enter</kbd>
   
 - The public key file(s), the ones with `.pub` extesion, must be set with **`644 (-rw-r--r--)`** permissions.  
   You can use the following command to achieve it:
   
-  `chmod 644 ~/.ssh/[Filename.pub]`
+  `chmod 644 ~/.ssh/[Filename.pub]` <kbd>Enter</kbd>
   
 - The private key, the `id_rsa` file, the ones with **no** extension, must be set with **`600 (-rw-------)`** permissions.  
   You can use the following command toachieve it:
   
-  `chmod 600 ~/.ssh/[Filename]`
+  `chmod 600 ~/.ssh/[Filename]` <kbd>Enter</kbd>
   
 
 
-STEP 3 - Saving the SSH Keys at Github
----------------------------------------------
+STEP 3 - Saving the SSH Keys on Github
+--------------------------------------
 
 This is the simplest part. Just login on Github and point the browser to: `https://github.com/settings/keys`. If you prefer you can navigate to this page by clicking on your Image Menu (top-right of screen) and select the option `Your Profile`. Then click at the button where it says <kbd>Edit profie</kbd> and select the option `SSH and GPG keys`. 
 
@@ -101,8 +106,9 @@ Simply repeat the same process for each Github account you want to have SSH Acce
 
 You are done. Now lets use it! :)
 
-Using your SSH Keys
----------------------------------------------
+
+Using your SSH Keys individually
+================================
 
 NO much to say here. Simply remember to refer to the proper host and the rest will simply work as desired. 
 
@@ -110,7 +116,8 @@ IN any standard configuration, Github is always accessed via `git@github.com`. I
 
 That's it. Just reference the call to the correct `HostName` and let the SSH Config File do the rest.
 
+
 Troubleshooting
----------------------------------------------
-Please refer to [github ssh issues](http://help.github.com/ssh-issues/) for common problems and solutions.
+---------------
+Please refer to [Github SSH Issues](http://help.github.com/ssh-issues/) for common problems and solutions.
 
