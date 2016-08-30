@@ -9,7 +9,7 @@ The usage of SSH is optional. For repositories accessible via **HTTPS** the **SS
 
 I the same sense, this tutorial won't cover how to setup a **_single_ SSH Key**. It should be a basic task for any developer. However, if you don't know how to do it, I would strongly suggest you to read <a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/" target="_blank">this page</a>. 
 
-Finally, this tutorial only covers the process for Linux/Unix/Mac environments. For Windows<sup>tm</sup> environments I suggest you to <a href="http://www.bing.com/search?q=Setting+up+Git+and+GitHub+for+development+on+Windows&go=Submit&qs=n&form=QBLH&pq=setting+up+git+and+github+for+development+on+windows&sc=0-52&sp=-1&sk=&cvid=FC7B8D05F6D64B4D8B3B487FC862CD24" target="_blank">Bing</a> it.
+Finally, this tutorial only covers the process for **Linux**/**Unix**/**Mac** environments. For <b>Windows<sup>tm</sup></b> environments I suggest you to <a href="http://www.bing.com/search?q=Setting+up+Git+and+GitHub+for+development+on+Windows&go=Submit&qs=n&form=QBLH&pq=setting+up+git+and+github+for+development+on+windows&sc=0-52&sp=-1&sk=&cvid=FC7B8D05F6D64B4D8B3B487FC862CD24" target="_blank">Bing</a> it.
 
 So, let's get our handy dirty! The entire process can be done in three easy steps:
 
@@ -20,7 +20,7 @@ STEP 1 - Create your Public Keys
 Assuming you have <a href="https://git-scm.com/downloads" target="_blank">downloaded and installed the latest version of Git</a> and already <a href="https://git-scm.com/book/uz/v2/Customizing-Git-Git-Configuration#_git_config" target="_blank">configured it correctly</a>, now it is time to create your **SSH Keys**. Lets begin by creating your personal SSH Keys. Open the terminal and type the following: 
 
 ```shell
-ssh-keygen -t rsa -C "your_email@youremail.com" <kbd>Enter</kbd>
+ssh-keygen -t rsa -C "your_email@youremail.com"
 ```
 Where it reads `your_email@youremail.com` you must enter the email associated with your Github personal account.
 
@@ -30,7 +30,7 @@ Once you type the desired name and press <kbd>Enter</kbd>, the SSH Key Generator
 
 You should see a message saying `The key fingerprint is:` with a bunch of numbers and another message just after it saying `The key's randomart image is:` with an ASCII representation of an image. It means you key was created correctly.
 
-Now, repeate the same process by typing `ssh-keygen -t rsa -C "email@business.com" <kbd>Enter</kbd>`, but now use the business emaill associated to the _other_ Github account. When asked by the name of the file you want to use you must enter a different name. I would suggest something like "`id_rsa_YourName_BusinessName`", so the keys will be created as `id_rsa_YourName_BusinessName` (the PRIVATE KEY) and `id_rsa_YourName_BusinessName.pub` (the PUBLIC KEY).
+Now, repeate the same process by typing `ssh-keygen -t rsa -C "email@business.com"` <kbd>Enter</kbd>, but now use the business emaill associated to the _other_ Github account. When asked by the name of the file you want to use you must enter a different name. I would suggest something like "`id_rsa_YourName_BusinessName`", so the keys will be created as `id_rsa_YourName_BusinessName` (the PRIVATE KEY) and `id_rsa_YourName_BusinessName.pub` (the PUBLIC KEY).
 
 Once complete, you will have four files in your `~/.ssh/` directory:
 
@@ -50,14 +50,14 @@ STEP 2 - Create a SSH Config File
 
 The SSH configuration files allow you to create shortcuts for sshd server, including advanced ssh client options. You can configure your OpenSSH ssh client using various files as follows to save time and typing frequently used ssh client command line options such as port, user, hostname, identity-file and much more. Yoy can learn more about it <a href="http://www.cyberciti.biz/faq/create-ssh-config-file-on-linux-unix/" target="_blank">here</a>, <a href="https://sanctum.geek.nz/arabesque/uses-for-ssh-config/" target="_blank">here</a> and <a href="http://linux.die.net/man/5/ssh_config" target="_blank">here</a>.
 
-In our case, as we are targeting Github, we can simply create a new file in the ~/.ssh/ directory named "config" (as indicated below):
+In our case, as we are targeting Github, we can simply create a new file in the `~/.ssh/` directory named "**config**" (as indicated below):
 
 ```shell
 cd ~/.ssh/
 touch config
 ```
 
-Then open it in a text editor (your choice: vi, vim, nano, gedit, kate, etc.) and paste in it the following:
+Then, open it in a text editor of your choice (vi, vim, nano, gedit, kate, etc.) and paste the following _script_:
 
 ```bash
 # My Personal Github Account Access
@@ -73,11 +73,11 @@ User git
 IdentityFile ~/.ssh/id_rsa_YourName_BusinessName
 ```
 
-Remember to fix the names to reflect the names you used when creating the SSH Keys.
+**NOTE:** Remember to fix the **SSH Key _File Names_** to reflect the ones you used when creating the **SSH Keys**.
 
-### Important Remarks about the ` ~/.ssh/` directory and its files:
+### Important Remarks about the `~/.ssh/` directory and the **SSH Key** files:
 
-SSH requires specific permissions for its _files_ and _directories_, otherwise it won't work. Most of the time SSH errors or lack of functionality are caused by misset permissions. Here how to do it right:
+Most of the time poeple fail using **SSH Keys** or get access errors because of bad permissions. SSH requires specific permissions for its _files_ and _directories_, otherwise it won't work. In some systems it may be more or less strict, but we will based our teachings here what the **_SSH Standards_** define. Here the basic recipe of how it should be done to function properly:
 
 - The `~/.ssh` directory permissions must be **`700 (drwx------)`**.  
   You can use the following command to achieve it:
