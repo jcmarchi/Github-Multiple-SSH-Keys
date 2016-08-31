@@ -1,11 +1,11 @@
 # Multiple SSH Keys for Multiple Github Accounts
-### How to configure multiple SSH Keys settings for different Github accounts and have your local development environment(s) set to work with them all.
+### How to configure multiple SSH Keys settings for different Github accounts and have your local development environment(s) set to work with them all, orderly.
 
-It is a very common scenario: developers having to deal with two or more Github accounts, and/or several discentralized projects..
+It is a very common scenario: developers having to deal with two or more Github accounts, and/or several discentralized projects.
 
 While Github helps keep each project organized and separated, most likely the developer will use the same machine to work with more than one Github account. As Github doesn't allow the same **SSH PUBLIC Key** to be added across accounts, the developer is forced to keep more than one set of **SSH Keys** (PRIVATE and PUBLIC Keys) in the same machine, then use the correct one to access each specific repository.
 
-The usage of SSH is optional. For repositories accessible via **HTTPS** the **SSH Keys** are not required. As such, if you are not intending to use SSH, you don't need to read this tutorial.
+The usage of SSH to access Github repositories is optional. The ones accessible via **HTTPS** are protected via SSL without requiring **SSH Keys**. As such, if SSL instead SSH is O.K. for you, simply stop reading this tutorial and have fun coding. :smirk: 
 
 In the same sense, this tutorial won't cover how to setup a **_single_ SSH Key**. It should be a basic task for any developer. However, if you don't know how to do it, I strongly suggest you to read <a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/" target="_blank">this page</a>. 
 
